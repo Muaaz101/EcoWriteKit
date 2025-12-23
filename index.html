@@ -18,22 +18,43 @@
       background-repeat: no-repeat;
       background-size: cover;
     }
+
+    /* Leaves animation */
+    .leaf {
+      position: absolute;
+      top: -2rem;
+      font-size: 24px;
+      animation-name: fall;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(200vh) rotate(360deg); opacity: 0; }
+    }
   </style>
 </head>
 <body class="bg-green-50 text-gray-800">
 
+<!-- Wrapper for Hero + How It Works -->
+<div class="relative overflow-hidden" id="leaves-wrapper">
+
+  <!-- Leaves Background -->
+  <div id="leaves-container" class="absolute top-0 left-0 w-full h-full pointer-events-none z-0"></div>
+
   <!-- Hero Section -->
-  <section class="min-h-screen flex flex-col justify-center items-center text-center px-6 bg-gradient-to-br from-green-100 to-green-200">
+  <section class="min-h-screen flex flex-col justify-center items-center text-center px-6 bg-gradient-to-br from-green-100/80 to-green-200/80 relative z-10">
     <h1 class="text-4xl md:text-6xl font-bold text-green-800">Write. Plant. Grow.</h1>
     <p class="mt-4 max-w-xl text-lg">Eco‑friendly pens and pencils embedded with seeds. When you're done writing, plant them and grow herbs, flowers, or vegetables.</p>
     <div class="mt-6 flex gap-4">
-      <button onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})" class="px-6 py-3 bg-green-700 text-white rounded-xl shadow hover:bg-green-800">How It Works</button>
+      <button onclick="document.getElementById('impact').scrollIntoView({behavior:'smooth'})" class="px-6 py-3 bg-green-700 text-white rounded-xl shadow hover:bg-green-800">Our Impact</button>
       <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" class="px-6 py-3 border border-green-700 text-green-700 rounded-xl hover:bg-green-100">Contact Us</button>
     </div>
   </section>
 
-  <!-- How It Works -->
-  <section id="how" class="py-16 px-6">
+  <!-- How It Works Section -->
+  <section id="how" class="py-16 px-6 relative z-10">
     <h2 class="text-3xl font-bold text-center text-green-800">How It Works</h2>
     <div class="grid md:grid-cols-3 gap-8 mt-10 max-w-6xl mx-auto">
       <div class="bg-white p-6 rounded-2xl shadow hover:scale-105 transition">
@@ -50,119 +71,140 @@
       </div>
     </div>
   </section>
+</div>
 
-  <!-- Full Screen Video Section -->
-  <section class="w-full h-screen bg-black flex items-center justify-center">
-    <iframe class="w-full h-full"
-      src="https://www.youtube.com/embed/2cy526VGrtI"
-      title="How to Sow Seeds – Gardening Basics"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen>
-    </iframe>
+<!-- Full Screen Video Section -->
+<section class="w-full h-screen bg-black flex items-center justify-center">
+  <iframe class="w-full h-full"
+    src="https://www.youtube.com/embed/WzCgE7Uc9r4"
+    title="How to Sow Seeds – Gardening Basics"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen>
+  </iframe>
+</section>
 
+<!-- Impact + Why Choose Us Split Layout -->
+<section id="impact" class="w-full h-screen grid grid-cols-2 grid-rows-2">
 
+  <!-- Impact Section -->
+  <div class="flex flex-col justify-center items-center bg-green-100 p-10 text-center">
+    <h2 class="text-4xl font-bold text-green-800">Our Impact</h2>
+    <p class="mt-4 max-w-md">Every plantable pen helps reduce plastic waste and grow a greener future.</p>
 
-  </section>
-
-  <!-- Impact + Why Choose Us Split Layout -->
-  <section class="w-full h-screen grid grid-cols-2 grid-rows-2">
-
-    <!-- Impact Section -->
-    <div class="flex flex-col justify-center items-center bg-green-100 p-10 text-center">
-      <h2 class="text-4xl font-bold text-green-800">Our Impact</h2>
-      <p class="mt-4 max-w-md">Every plantable pen helps reduce plastic waste and grow a greener future.</p>
-
-      <div class="mt-10 flex gap-12">
-        <div class="transition transform hover:scale-110">
-          <p id="trees" class="text-5xl font-bold text-green-700">0</p>
-          <p class="mt-2">Plants Grown</p>
-        </div>
-        <div class="transition transform hover:scale-110">
-          <p id="plastic" class="text-5xl font-bold text-green-700">0</p>
-          <p class="mt-2">Plastic Pens Replaced</p>
-        </div>
+    <div class="mt-10 flex gap-12">
+      <div class="transition transform hover:scale-110">
+        <p id="trees" class="text-5xl font-bold text-green-700">0</p>
+        <p class="mt-2">Plants Grown</p>
+      </div>
+      <div class="transition transform hover:scale-110">
+        <p id="plastic" class="text-5xl font-bold text-green-700">0</p>
+        <p class="mt-2">Plastic Pens Replaced</p>
       </div>
     </div>
+  </div>
 
-    <!-- Impact Image (Parallax) -->
-    <div class="w-full h-full parallax" style="background-image:url('https://media.istockphoto.com/id/469538141/photo/plant-sprouting-from-the-dirt-with-a-blurred-background.jpg?s=612x612&w=0&k=20&c=uc-WaLHzRlsrBsHrTVO4fEqRqPjkh-MHtlGLj-QWI64=');"></div>
+  <!-- Impact Image (Parallax) -->
+  <div class="w-full h-full parallax" style="background-image:url('https://www.sowandgrow.in/cdn/shop/files/seed_pencil_growing_1024x1024@2x.jpg?v=1749990043');"></div>
 
-    <!-- Why Choose Us Image (Parallax) -->
-    <div class="w-full h-full parallax" style="background-image:url('https://www.sowandgrow.in/cdn/shop/files/seed_pencil_growing_1024x1024@2x.jpg?v=1749990043');"></div>
+  <!-- Why Choose Us Image (Parallax) -->
+  <div class="w-full h-full parallax" style="background-image:url('https://www.sowandgrow.in/cdn/shop/files/seed_pencil_growing_1024x1024@2x.jpg?v=1749990043');"></div>
 
-    <!-- Why Choose Us Section -->
-    <div class="flex flex-col justify-center bg-white p-10 text-center">
-      <h2 class="text-4xl font-bold text-green-800 mb-6">Why Choose Us?</h2>
-      <ul class="space-y-4 text-lg">
-        <li class="transition hover:translate-x-2">✅ 100% biodegradable & eco-friendly</li>
-        <li class="transition hover:translate-x-2">✅ Supports sustainability & green habits</li>
-        <li class="transition hover:translate-x-2">✅ Ideal for students, offices & institutions</li>
-        <li class="transition hover:translate-x-2">✅ Affordable with real environmental impact</li>
-      </ul>
+  <!-- Why Choose Us Section -->
+  <div class="flex flex-col justify-center bg-white p-10 text-center">
+    <h2 class="text-4xl font-bold text-green-800 mb-6">Why Choose Us?</h2>
+    <ul class="space-y-4 text-lg">
+      <li class="transition hover:translate-x-2">🪴 100% biodegradable & eco-friendly</li>
+      <li class="transition hover:translate-x-2">🪴 Supports sustainability & green habits</li>
+      <li class="transition hover:translate-x-2">🪴 Ideal for students, offices & institutions</li>
+      <li class="transition hover:translate-x-2">🪴 Affordable with real environmental impact</li>
+    </ul>
+  </div>
+
+</section>
+
+<!-- Custom Signature & Donation Program -->
+<section class="py-24 px-6 bg-green-50">
+  <h2 class="text-3xl font-bold text-center text-green-800 mb-6">Your Signature. Your Impact.</h2>
+  <p class="mt-4 max-w-3xl mx-auto text-center text-lg">
+    Create custom plantable pens and pencils for your company, institute, school, or university — designed with your own theme, logo, and message.
+  </p>
+
+  <div class="grid md:grid-cols-3 gap-8 mt-12 max-w-6xl mx-auto">
+    <div class="bg-white p-6 rounded-2xl shadow">
+      <h3 class="font-semibold text-xl">🎨 Custom Branding</h3>
+      <p class="mt-2">Your logo, colors, and message printed on eco-friendly stationery that reflects your identity.</p>
     </div>
-
-  </section>
-  
-
-  <!-- Custom Signature & Donation Program -->
-  <section class="py-16 px-6 bg-green-50">
-    <h2 class="text-3xl font-bold text-center text-green-800">Your Signature. Your Impact.</h2>
-    <p class="mt-4 max-w-3xl mx-auto text-center text-lg">
-      Create custom plantable pens and pencils for your company, institute, school, or university — designed with your own theme, logo, and message.
-    </p>
-
-    <div class="grid md:grid-cols-3 gap-8 mt-12 max-w-6xl mx-auto">
-      <div class="bg-white p-6 rounded-2xl shadow">
-        <h3 class="font-semibold text-xl">🎨 Custom Branding</h3>
-        <p class="mt-2">Your logo, colors, and message printed on eco-friendly stationery that reflects your identity.</p>
-      </div>
-      <div class="bg-white p-6 rounded-2xl shadow">
-        <h3 class="font-semibold text-xl">🎁 Green Gifting</h3>
-        <p class="mt-2">Perfect for events, admissions, orientations, conferences, and corporate gift packs.</p>
-      </div>
-      <div class="bg-white p-6 rounded-2xl shadow">
-        <h3 class="font-semibold text-xl">🌍 Donate & Distribute</h3>
-        <p class="mt-2">Sponsor plantable pens for Save Earth drives. We distribute them in schools and communities on your behalf.</p>
-      </div>
+    <div class="bg-white p-6 rounded-2xl shadow">
+      <h3 class="font-semibold text-xl">🎁 Green Gifting</h3>
+      <p class="mt-2">Perfect for events, admissions, orientations, conferences, and corporate gift packs.</p>
     </div>
+    <div class="bg-white p-6 rounded-2xl shadow">
+      <h3 class="font-semibold text-xl">🌍 Donate & Distribute</h3>
+      <p class="mt-2">Sponsor plantable pens for Save Earth drives. We distribute them in schools and communities on your behalf.</p>
+    </div>
+  </div>
 
-    <p class="mt-10 text-center max-w-4xl mx-auto">
-      This initiative allows organizations to market responsibly, support education, and contribute directly to environmental sustainability — one pen at a time.
-    </p>
-  </section>
+  <p class="mt-10 text-center max-w-4xl mx-auto">
+    This initiative allows organizations to market responsibly, support education, and contribute directly to environmental sustainability — one pen at a time.
+  </p>
+</section>
 
-  <!-- Contact / CTA -->
-  <section id="contact" class="py-16 px-6 bg-green-800 text-white text-center">
-    <h2 class="text-3xl font-bold">Let’s Grow Together 🌱</h2>
-    <p class="mt-4 max-w-xl mx-auto">Interested in bulk orders, partnerships, or learning more about our startup?</p>
-    <form class="mt-6 max-w-md mx-auto grid gap-4">
-      <input type="text" placeholder="Your Name" class="p-3 rounded-xl text-gray-800" required />
-      <input type="email" placeholder="Your Email" class="p-3 rounded-xl text-gray-800" required />
-      <textarea placeholder="Your Message" class="p-3 rounded-xl text-gray-800" rows="4"></textarea>
-      <button type="submit" class="bg-white text-green-800 font-semibold py-3 rounded-xl hover:bg-green-100">Send Message</button>
-    </form>
-  </section>
+<!-- Contact / CTA -->
+<section id="contact" class="py-16 px-6 bg-green-800 text-white text-center">
+  <h2 class="text-3xl font-bold">Let’s Grow Together 🌱</h2>
+  <p class="mt-4 max-w-xl mx-auto">Interested in bulk orders, partnerships, or learning more about our startup?</p>
+  <form class="mt-6 max-w-md mx-auto grid gap-4">
+    <input type="text" placeholder="Your Name" class="p-3 rounded-xl text-gray-800" required />
+    <input type="email" placeholder="Your Email" class="p-3 rounded-xl text-gray-800" required />
+    <textarea placeholder="Your Message" class="p-3 rounded-xl text-gray-800" rows="4"></textarea>
+    <button type="submit" class="bg-white text-green-800 font-semibold py-3 rounded-xl hover:bg-green-100">Send Message</button>
+  </form>
+</section>
 
-  <!-- Footer -->
-  <footer class="py-6 text-center bg-green-900 text-green-100">
-    <p>© 2025 Plantable Stationery Startup | Technology Entrepreneurship Project</p>
-  </footer>
+<!-- Footer -->
+<footer class="py-6 text-center bg-green-900 text-green-100">
+  <p>© 2025 Plantable Stationery Startup | Technology Entrepreneurship Project</p>
+</footer>
 
-  <script>
-    let trees = 0;
-    let plastic = 0;
-    const treesEl = document.getElementById('trees');
-    const plasticEl = document.getElementById('plastic');
+<script>
+  // Counters
+  let trees = 0;
+  let plastic = 0;
+  const treesEl = document.getElementById('trees');
+  const plasticEl = document.getElementById('plastic');
 
+  function updateCounters() {
     const interval = setInterval(() => {
-      trees += 3;
-      plastic += 5;
+      if(trees < 300) trees += 3;
+      if(plastic < 500) plastic += 5;
+
       treesEl.textContent = trees;
       plasticEl.textContent = plastic;
-      if (trees >= 300) clearInterval(interval);
+
+      if(trees >= 300 && plastic >= 500) clearInterval(interval);
     }, 50);
-  </script>
+  }
+  updateCounters();
+
+  // Leaves animation
+  const container = document.getElementById('leaves-container');
+
+  function createLeaf() {
+    const leaf = document.createElement('div');
+    leaf.className = 'leaf';
+    leaf.textContent = '🍃';
+    leaf.style.left = Math.random() * 100 + 'vw';
+    leaf.style.fontSize = (12 + Math.random() * 20) + 'px';
+    leaf.style.animationDuration = (5 + Math.random() * 5) + 's';
+    leaf.style.animationDelay = Math.random() * 5 + 's';
+    container.appendChild(leaf);
+
+    setTimeout(() => leaf.remove(), 15000);
+  }
+
+  setInterval(createLeaf, 300);
+</script>
 
 </body>
 </html>
