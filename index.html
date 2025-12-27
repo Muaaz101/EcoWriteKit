@@ -85,35 +85,37 @@
 </section>
 
 <!-- Impact + Why Choose Us Split Layout -->
-<section id="impact" class="w-full h-screen grid grid-cols-2 grid-rows-2">
+<section id="impact" class="w-full min-h-screen grid grid-cols-2 grid-rows-2 gap-0">
 
   <!-- Impact Section -->
-  <div class="flex flex-col justify-center items-center bg-green-100 p-10 text-center">
-    <h2 class="text-4xl font-bold text-green-800">Our Impact</h2>
-    <p class="mt-4 max-w-md">Every plantable pen helps reduce plastic waste and grow a greener future.</p>
+  <div class="flex flex-col justify-center items-center bg-green-100 p-4 sm:p-6 md:p-10 text-center">
+    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-green-800">Our Impact</h2>
+    <p class="mt-2 sm:mt-4 text-sm sm:text-base md:text-lg max-w-full md:max-w-md">
+      Every plantable pen helps reduce plastic waste and grow a greener future.
+    </p>
 
-    <div class="mt-10 flex gap-12">
+    <div class="mt-6 sm:mt-10 flex flex-col sm:flex-row gap-4 sm:gap-12 justify-center">
       <div class="transition transform hover:scale-110">
-        <p id="trees" class="text-5xl font-bold text-green-700">0</p>
-        <p class="mt-2">Plants Grown</p>
+        <p id="trees" class="text-3xl sm:text-4xl md:text-5xl font-bold text-green-700">0</p>
+        <p class="mt-1 sm:mt-2 text-sm sm:text-base md:text-lg">Plants Grown</p>
       </div>
       <div class="transition transform hover:scale-110">
-        <p id="plastic" class="text-5xl font-bold text-green-700">0</p>
-        <p class="mt-2">Plastic Pens Replaced</p>
+        <p id="plastic" class="text-3xl sm:text-4xl md:text-5xl font-bold text-green-700">0</p>
+        <p class="mt-1 sm:mt-2 text-sm sm:text-base md:text-lg">Plastic Pens Replaced</p>
       </div>
     </div>
   </div>
 
   <!-- Impact Image (Parallax) -->
-  <div class="w-full h-full parallax" style="background-image:url('https://www.sowandgrow.in/cdn/shop/files/seed_pencil_growing_1024x1024@2x.jpg?v=1749990043');"></div>
+  <div class="w-full h-full parallax" style="background-image:url('https://www.sowandgrow.in/cdn/shop/files/seed_pencil_growing_1024x1024@2x.jpg?v=1749990043'); background-size: cover; background-position: center;"></div>
 
   <!-- Why Choose Us Image (Parallax) -->
-  <div class="w-full h-full parallax" style="background-image:url('https://www.sowandgrow.in/cdn/shop/files/seed_pencil_growing_1024x1024@2x.jpg?v=1749990043');"></div>
+  <div class="w-full h-full parallax" style="background-image:url('https://www.sowandgrow.in/cdn/shop/files/seed_pencil_growing_1024x1024@2x.jpg?v=1749990043'); background-size: cover; background-position: center;"></div>
 
   <!-- Why Choose Us Section -->
-  <div class="flex flex-col justify-center bg-white p-10 text-center">
-    <h2 class="text-4xl font-bold text-green-800 mb-6">Why Choose Us?</h2>
-    <ul class="space-y-4 text-lg">
+  <div class="flex flex-col justify-center bg-white p-4 sm:p-6 md:p-10 text-center">
+    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-green-800 mb-2 sm:mb-4 md:mb-6">Why Choose Us?</h2>
+    <ul class="space-y-2 sm:space-y-3 md:space-y-4 text-sm sm:text-base md:text-lg break-words">
       <li class="transition hover:translate-x-2">🪴 100% biodegradable & eco-friendly</li>
       <li class="transition hover:translate-x-2">🪴 Supports sustainability & green habits</li>
       <li class="transition hover:translate-x-2">🪴 Ideal for students, offices & institutions</li>
@@ -122,6 +124,8 @@
   </div>
 
 </section>
+
+
 
 <!-- Custom Signature & Donation Program -->
 <section class="py-24 px-6 bg-green-50">
@@ -154,13 +158,29 @@
 <section id="contact" class="py-16 px-6 bg-green-800 text-white text-center">
   <h2 class="text-3xl font-bold">Let’s Grow Together 🌱</h2>
   <p class="mt-4 max-w-xl mx-auto">Interested in bulk orders, partnerships, or learning more about our startup?</p>
-  <form class="mt-6 max-w-md mx-auto grid gap-4">
-    <input type="text" placeholder="Your Name" class="p-3 rounded-xl text-gray-800" required />
-    <input type="email" placeholder="Your Email" class="p-3 rounded-xl text-gray-800" required />
-    <textarea placeholder="Your Message" class="p-3 rounded-xl text-gray-800" rows="4"></textarea>
+  
+  <form 
+    name="contact" 
+    method="POST" 
+    data-netlify="true" 
+    netlify-honeypot="bot-field" 
+    class="mt-6 max-w-md mx-auto grid gap-4"
+  >
+    <!-- Hidden input for Netlify bot protection -->
+    <input type="hidden" name="form-name" value="contact">
+    <p class="hidden">
+      <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
+    </p>
+
+    <!-- Visible input fields -->
+    <input type="text" name="name" placeholder="Your Name" class="p-3 rounded-xl text-gray-800" required />
+    <input type="email" name="email" placeholder="Your Email" class="p-3 rounded-xl text-gray-800" required />
+    <textarea name="message" placeholder="Your Message" class="p-3 rounded-xl text-gray-800" rows="4" required></textarea>
+
     <button type="submit" class="bg-white text-green-800 font-semibold py-3 rounded-xl hover:bg-green-100">Send Message</button>
   </form>
 </section>
+
 
 <!-- Footer -->
 <footer class="py-6 text-center bg-green-900 text-green-100">
