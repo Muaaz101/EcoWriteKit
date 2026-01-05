@@ -39,7 +39,7 @@
       position: relative;
       transform: translateY(50px); /* Start 50px lower */
       opacity: 0; /* Start hidden */
-      transition: all 1s ease-out; /* Smooth transition */
+      transition: all 1s ease-out; /* Smooth transition for entry */
     }
 
     .reveal.active {
@@ -112,7 +112,7 @@
             <p class="mt-1 sm:mt-2 text-sm sm:text-base md:text-lg">Plants Grown</p>
         </div>
         <div class="transition transform hover:scale-110">
-             <p id="plastic" class="text-3xl sm:text-4xl md:text-5xl font-bold text-green-700">0</p>
+            <p id="plastic" class="text-3xl sm:text-4xl md:text-5xl font-bold text-green-700">0</p>
             <p class="mt-1 sm:mt-2 text-sm sm:text-base md:text-lg">Plastic Pens Replaced</p>
         </div>
         </div>
@@ -148,18 +148,28 @@
   </div>
 
   <div class="grid md:grid-cols-3 gap-8 mt-12 max-w-6xl mx-auto">
-    <div class="reveal bg-white p-6 rounded-2xl shadow">
-      <h3 class="font-semibold text-xl">🎨 Custom Branding</h3>
-      <p class="mt-2">Your logo, colors, and message printed on eco-friendly stationery that reflects your identity.</p>
+    
+    <div class="reveal h-full">
+      <div class="h-full bg-white p-6 rounded-2xl shadow border border-transparent hover:border-green-500 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+        <h3 class="font-semibold text-xl">🎨 Custom Branding</h3>
+        <p class="mt-2">Your logo, colors, and message printed on eco-friendly stationery that reflects your identity.</p>
+      </div>
     </div>
-    <div class="reveal bg-white p-6 rounded-2xl shadow" style="transition-delay: 200ms;">
-      <h3 class="font-semibold text-xl">🎁 Green Gifting</h3>
-      <p class="mt-2">Perfect for events, admissions, orientations, conferences, and corporate gift packs.</p>
+
+    <div class="reveal h-full" style="transition-delay: 200ms;">
+      <div class="h-full bg-white p-6 rounded-2xl shadow border border-transparent hover:border-green-500 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+        <h3 class="font-semibold text-xl">🎁 Green Gifting</h3>
+        <p class="mt-2">Perfect for events, admissions, orientations, conferences, and corporate gift packs.</p>
+      </div>
     </div>
-    <div class="reveal bg-white p-6 rounded-2xl shadow" style="transition-delay: 400ms;">
-      <h3 class="font-semibold text-xl">🌍 Donate & Distribute</h3>
-      <p class="mt-2">Sponsor plantable pens for Save Earth drives. We distribute them in schools and communities on your behalf.</p>
+
+    <div class="reveal h-full" style="transition-delay: 400ms;">
+      <div class="h-full bg-white p-6 rounded-2xl shadow border border-transparent hover:border-green-500 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+        <h3 class="font-semibold text-xl">🌍 Donate & Distribute</h3>
+        <p class="mt-2">Sponsor plantable pens for Save Earth drives. We distribute them in schools and communities on your behalf.</p>
+      </div>
     </div>
+
   </div>
 
   <p class="reveal mt-10 text-center max-w-4xl mx-auto">
@@ -240,7 +250,7 @@
       plasticEl.textContent = plastic;
 
       if(trees === treesTarget && plastic === plasticTarget) clearInterval(interval);
-    }, 70); // Slightly slower speed for better visibility
+    }, 70);
   }
 
   // Observer
