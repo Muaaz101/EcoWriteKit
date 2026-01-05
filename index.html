@@ -33,39 +33,53 @@
       0% { transform: translateY(0) rotate(0deg); opacity: 1; }
       100% { transform: translateY(200vh) rotate(360deg); opacity: 0; }
     }
+
+    /* --- SCROLL ANIMATION STYLES --- */
+    .reveal {
+      position: relative;
+      transform: translateY(50px); /* Start 50px lower */
+      opacity: 0; /* Start hidden */
+      transition: all 1s ease-out; /* Smooth transition */
+    }
+
+    .reveal.active {
+      transform: translateY(0); /* Move to original position */
+      opacity: 1; /* Become visible */
+    }
   </style>
 </head>
 <body class="bg-green-50 text-gray-800">
 
-<!-- Wrapper for Hero + How It Works -->
 <div class="relative overflow-hidden" id="leaves-wrapper">
 
-  <!-- Leaves Background -->
   <div id="leaves-container" class="absolute top-0 left-0 w-full h-full pointer-events-none z-0"></div>
 
-  <!-- Hero Section -->
   <section class="min-h-screen flex flex-col justify-center items-center text-center px-6 bg-gradient-to-br from-green-100/80 to-green-200/80 relative z-10">
-    <h1 class="text-4xl md:text-6xl font-bold text-green-800">Write. Plant. Grow.</h1>
-    <p class="mt-4 max-w-xl text-lg">Eco‑friendly pens and pencils embedded with seeds. When you're done writing, plant them and grow herbs, flowers, or vegetables.</p>
-    <div class="mt-6 flex gap-4">
-      <button onclick="document.getElementById('impact').scrollIntoView({behavior:'smooth'})" class="px-6 py-3 bg-green-700 text-white rounded-xl shadow hover:bg-green-800">Our Impact</button>
-      <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" class="px-6 py-3 border border-green-700 text-green-700 rounded-xl hover:bg-green-100">Contact Us</button>
+    <div class="reveal">
+        <h1 class="text-4xl md:text-6xl font-bold text-green-800">Write. Plant. Grow.</h1>
+        <p class="mt-4 max-w-xl mx-auto text-lg">Eco‑friendly pens and pencils embedded with seeds. When you're done writing, plant them and grow herbs, flowers, or vegetables.</p>
+        <div class="mt-6 flex justify-center gap-4">
+        <button onclick="document.getElementById('impact').scrollIntoView({behavior:'smooth'})" class="px-6 py-3 bg-green-700 text-white rounded-xl shadow hover:bg-green-800 transition transform hover:scale-105">Our Impact</button>
+        <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" class="px-6 py-3 border border-green-700 text-green-700 rounded-xl hover:bg-green-100 transition transform hover:scale-105">Contact Us</button>
+        </div>
     </div>
   </section>
 
-  <!-- How It Works Section -->
   <section id="how" class="py-16 px-6 relative z-10">
-    <h2 class="text-3xl font-bold text-center text-green-800">How It Works</h2>
+    <div class="reveal">
+        <h2 class="text-3xl font-bold text-center text-green-800">How It Works</h2>
+    </div>
+    
     <div class="grid md:grid-cols-3 gap-8 mt-10 max-w-6xl mx-auto">
-      <div class="bg-white p-6 rounded-2xl shadow hover:scale-105 transition">
+      <div class="reveal bg-white p-6 rounded-2xl shadow hover:scale-105 transition">
         <h3 class="font-semibold text-xl">✍️ Use</h3>
         <p class="mt-2">Write like a normal pen or pencil for school, office, or daily use.</p>
       </div>
-      <div class="bg-white p-6 rounded-2xl shadow hover:scale-105 transition">
+      <div class="reveal bg-white p-6 rounded-2xl shadow hover:scale-105 transition" style="transition-delay: 200ms;">
         <h3 class="font-semibold text-xl">🌱 Plant</h3>
         <p class="mt-2">When finished, place it in soil. The biodegradable body dissolves naturally.</p>
       </div>
-      <div class="bg-white p-6 rounded-2xl shadow hover:scale-105 transition">
+      <div class="reveal bg-white p-6 rounded-2xl shadow hover:scale-105 transition" style="transition-delay: 400ms;">
         <h3 class="font-semibold text-xl">🌿 Grow</h3>
         <p class="mt-2">Seeds sprout into herbs or flowers, reducing waste and helping the planet.</p>
       </div>
@@ -73,8 +87,7 @@
   </section>
 </div>
 
-<!-- Full Screen Video Section -->
-<section class="w-full h-screen bg-black flex items-center justify-center">
+<section class="w-full h-screen bg-black flex items-center justify-center reveal">
   <iframe class="w-full h-full"
     src="https://www.youtube.com/embed/Geln_MJq430"
     title="How to Sow Seeds – Gardening Basics"
@@ -84,135 +97,164 @@
   </iframe>
 </section>
 
-<!-- Impact + Why Choose Us Split Layout -->
 <section id="impact" class="w-full min-h-screen grid grid-cols-2 grid-rows-2 gap-0">
 
-  <!-- Impact Section -->
-  <div class="flex flex-col justify-center items-center bg-green-100 p-4 sm:p-6 md:p-10 text-center">
-    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-green-800">Our Impact</h2>
-    <p class="mt-2 sm:mt-4 text-sm sm:text-base md:text-lg max-w-full md:max-w-md">
-      Every plantable pen helps reduce plastic waste and grow a greener future.
-    </p>
+  <div class="flex flex-col justify-center items-center bg-green-100 p-4 sm:p-6 md:p-10 text-center relative">
+    <div class="reveal" id="counter-trigger">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-green-800">Our Impact</h2>
+        <p class="mt-2 sm:mt-4 text-sm sm:text-base md:text-lg max-w-full md:max-w-md">
+        Every plantable pen helps reduce plastic waste and grow a greener future.
+        </p>
 
-    <div class="mt-6 sm:mt-10 flex flex-col sm:flex-row gap-4 sm:gap-12 justify-center">
-      <div class="transition transform hover:scale-110">
-        <p id="trees" class="text-3xl sm:text-4xl md:text-5xl font-bold text-green-700">0</p>
-        <p class="mt-1 sm:mt-2 text-sm sm:text-base md:text-lg">Plants Grown</p>
-      </div>
-      <div class="transition transform hover:scale-110">
-        <p id="plastic" class="text-3xl sm:text-4xl md:text-5xl font-bold text-green-700">0</p>
-        <p class="mt-1 sm:mt-2 text-sm sm:text-base md:text-lg">Plastic Pens Replaced</p>
-      </div>
+        <div class="mt-6 sm:mt-10 flex flex-col sm:flex-row gap-4 sm:gap-12 justify-center">
+        <div class="transition transform hover:scale-110">
+            <p id="trees" class="text-3xl sm:text-4xl md:text-5xl font-bold text-green-700">0</p>
+            <p class="mt-1 sm:mt-2 text-sm sm:text-base md:text-lg">Plants Grown</p>
+        </div>
+        <div class="transition transform hover:scale-110">
+             <p id="plastic" class="text-3xl sm:text-4xl md:text-5xl font-bold text-green-700">0</p>
+            <p class="mt-1 sm:mt-2 text-sm sm:text-base md:text-lg">Plastic Pens Replaced</p>
+        </div>
+        </div>
     </div>
   </div>
 
-  <!-- Impact Image (Parallax) -->
   <div class="w-full h-full parallax" style="background-image:url('https://www.sowandgrow.in/cdn/shop/files/seed_pencil_growing_1024x1024@2x.jpg?v=1749990043'); background-size: cover; background-position: center;"></div>
 
-  <!-- Why Choose Us Image (Parallax) -->
   <div class="w-full h-full parallax" style="background-image:url('https://www.sowandgrow.in/cdn/shop/files/seed_pencil_growing_1024x1024@2x.jpg?v=1749990043'); background-size: cover; background-position: center;"></div>
 
-  <!-- Why Choose Us Section -->
   <div class="flex flex-col justify-center bg-white p-4 sm:p-6 md:p-10 text-center">
-    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-green-800 mb-2 sm:mb-4 md:mb-6">Why Choose Us?</h2>
-    <ul class="space-y-2 sm:space-y-3 md:space-y-4 text-sm sm:text-base md:text-lg break-words">
-      <li class="transition hover:translate-x-2">🪴 100% biodegradable & eco-friendly</li>
-      <li class="transition hover:translate-x-2">🪴 Supports sustainability & green habits</li>
-      <li class="transition hover:translate-x-2">🪴 Ideal for students, offices & institutions</li>
-      <li class="transition hover:translate-x-2">🪴 Affordable with real environmental impact</li>
-    </ul>
+    <div class="reveal">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-green-800 mb-2 sm:mb-4 md:mb-6">Why Choose Us?</h2>
+        <ul class="space-y-2 sm:space-y-3 md:space-y-4 text-sm sm:text-base md:text-lg break-words">
+        <li class="transition hover:translate-x-2">🪴 100% biodegradable & eco-friendly</li>
+        <li class="transition hover:translate-x-2">🪴 Supports sustainability & green habits</li>
+        <li class="transition hover:translate-x-2">🪴 Ideal for students, offices & institutions</li>
+        <li class="transition hover:translate-x-2">🪴 Affordable with real environmental impact</li>
+        </ul>
+    </div>
   </div>
 
 </section>
 
 
 
-<!-- Custom Signature & Donation Program -->
 <section class="py-24 px-6 bg-green-50">
-  <h2 class="text-3xl font-bold text-center text-green-800 mb-6">Your Signature. Your Impact.</h2>
-  <p class="mt-4 max-w-3xl mx-auto text-center text-lg">
-    Create custom plantable pens and pencils for your company, institute, school, or university — designed with your own theme, logo, and message.
-  </p>
+  <div class="reveal">
+    <h2 class="text-3xl font-bold text-center text-green-800 mb-6">Your Signature. Your Impact.</h2>
+    <p class="mt-4 max-w-3xl mx-auto text-center text-lg">
+        Create custom plantable pens and pencils for your company, institute, school, or university — designed with your own theme, logo, and message.
+    </p>
+  </div>
 
   <div class="grid md:grid-cols-3 gap-8 mt-12 max-w-6xl mx-auto">
-    <div class="bg-white p-6 rounded-2xl shadow">
+    <div class="reveal bg-white p-6 rounded-2xl shadow">
       <h3 class="font-semibold text-xl">🎨 Custom Branding</h3>
       <p class="mt-2">Your logo, colors, and message printed on eco-friendly stationery that reflects your identity.</p>
     </div>
-    <div class="bg-white p-6 rounded-2xl shadow">
+    <div class="reveal bg-white p-6 rounded-2xl shadow" style="transition-delay: 200ms;">
       <h3 class="font-semibold text-xl">🎁 Green Gifting</h3>
       <p class="mt-2">Perfect for events, admissions, orientations, conferences, and corporate gift packs.</p>
     </div>
-    <div class="bg-white p-6 rounded-2xl shadow">
+    <div class="reveal bg-white p-6 rounded-2xl shadow" style="transition-delay: 400ms;">
       <h3 class="font-semibold text-xl">🌍 Donate & Distribute</h3>
       <p class="mt-2">Sponsor plantable pens for Save Earth drives. We distribute them in schools and communities on your behalf.</p>
     </div>
   </div>
 
-  <p class="mt-10 text-center max-w-4xl mx-auto">
+  <p class="reveal mt-10 text-center max-w-4xl mx-auto">
     This initiative allows organizations to market responsibly, support education, and contribute directly to environmental sustainability — one pen at a time.
   </p>
 </section>
 
-<!-- Contact / CTA -->
 <section id="contact" class="py-16 px-6 bg-green-800 text-white text-center">
-  <h2 class="text-3xl font-bold">Let’s Grow Together 🌱</h2>
-  <p class="mt-4 max-w-xl mx-auto">Interested in bulk orders, partnerships, or learning more about our startup?</p>
-  
-  <form 
-    name="contact" 
-    method="POST" 
-    data-netlify="true" 
-    netlify-honeypot="bot-field" 
-    data-netlify-success="/thank-you.html"
-    class="mt-6 max-w-md mx-auto grid gap-4"
-  >
-    <!-- Hidden input for Netlify bot protection -->
-    <input type="hidden" name="form-name" value="contact">
+  <div class="reveal">
+    <h2 class="text-3xl font-bold">Let’s Grow Together 🌱</h2>
+    <p class="mt-4 max-w-xl mx-auto">Interested in bulk orders, partnerships, or learning more about our startup?</p>
     
-    <!-- Honeypot field for spam bots -->
-    <p class="hidden">
-      <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
-    </p>
+    <form 
+        name="contact" 
+        method="POST" 
+        data-netlify="true" 
+        netlify-honeypot="bot-field" 
+        data-netlify-success="/thank-you.html"
+        class="mt-6 max-w-md mx-auto grid gap-4"
+    >
+        <input type="hidden" name="form-name" value="contact">
+        <p class="hidden">
+        <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
+        </p>
 
-    <!-- Visible input fields -->
-    <input type="text" name="name" placeholder="Your Name" class="p-3 rounded-xl text-gray-800" required />
-    <input type="email" name="email" placeholder="Your Email" class="p-3 rounded-xl text-gray-800" required />
-    <textarea name="message" placeholder="Your Message" class="p-3 rounded-xl text-gray-800" rows="4" required></textarea>
+        <input type="text" name="name" placeholder="Your Name" class="p-3 rounded-xl text-gray-800" required />
+        <input type="email" name="email" placeholder="Your Email" class="p-3 rounded-xl text-gray-800" required />
+        <textarea name="message" placeholder="Your Message" class="p-3 rounded-xl text-gray-800" rows="4" required></textarea>
 
-    <button type="submit" class="bg-white text-green-800 font-semibold py-3 rounded-xl hover:bg-green-100">Send Message</button>
-  </form>
+        <button type="submit" class="bg-white text-green-800 font-semibold py-3 rounded-xl hover:bg-green-100 transform hover:scale-105 transition">Send Message</button>
+    </form>
+  </div>
 </section>
 
+<footer class="py-8 text-center bg-green-900 text-green-100">
+  <div class="flex flex-col items-center gap-6">
+    
+    <a href="https://www.instagram.com/ecogreenwrite?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" 
+       target="_blank" 
+       rel="noopener noreferrer"
+       class="inline-flex items-center gap-3 px-6 py-2 border border-green-400/50 rounded-full bg-green-800/50 hover:bg-white hover:text-green-900 hover:scale-105 transition duration-300 shadow-lg group">
+       
+       <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+         <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+       </svg>
+       
+       <span class="font-semibold tracking-wide">Follow us @ecogreenwrite</span>
+    </a>
 
-
-
-<!-- Footer -->
-<footer class="py-6 text-center bg-green-900 text-green-100">
-  <p>© 2025 Plantable Stationery Startup </p>
+    <p class="text-sm opacity-80">© 2025 Plantable Stationery Startup </p>
+  </div>
 </footer>
 
 <script>
-  // Counters
-  let trees = 0;
-  let plastic = 0;
-  const treesEl = document.getElementById('trees');
-  const plasticEl = document.getElementById('plastic');
+  // --- FIXED: Counters Animation (Targets 18 and 20) ---
+  const counterSection = document.getElementById('counter-trigger');
+  let hasCounted = false;
 
-  function updateCounters() {
+  function startCounters() {
+    if (hasCounted) return;
+    hasCounted = true;
+
+    let trees = 0;
+    let plastic = 0;
+    const treesEl = document.getElementById('trees');
+    const plasticEl = document.getElementById('plastic');
+    
+    // UPDATED TARGETS
+    const treesTarget = 18;
+    const plasticTarget = 20;
+
     const interval = setInterval(() => {
-      if(trees < 17) trees += 3;
-      if(plastic < 20) plastic += 5;
+      // Increment one by one for smooth animation on small numbers
+      if(trees < treesTarget) trees++;
+      if(plastic < plasticTarget) plastic++;
 
       treesEl.textContent = trees;
       plasticEl.textContent = plastic;
 
-      if(trees >= 300 && plastic >= 500) clearInterval(interval);
-    }, 50);
+      if(trees === treesTarget && plastic === plasticTarget) clearInterval(interval);
+    }, 70); // Slightly slower speed for better visibility
   }
-  updateCounters();
 
-  // Leaves animation
+  // Observer
+  const observer = new IntersectionObserver((entries) => {
+    if(entries[0].isIntersecting) {
+      startCounters();
+      observer.disconnect();
+    }
+  }, { threshold: 0.5 });
+
+  observer.observe(counterSection);
+
+
+  // --- Leaves animation ---
   const container = document.getElementById('leaves-container');
 
   function createLeaf() {
@@ -229,6 +271,24 @@
   }
 
   setInterval(createLeaf, 300);
+
+  // --- Scroll Reveal Animation ---
+  function reveal() {
+    var reveals = document.querySelectorAll(".reveal");
+
+    for (var i = 0; i < reveals.length; i++) {
+      var windowHeight = window.innerHeight;
+      var elementTop = reveals[i].getBoundingClientRect().top;
+      var elementVisible = 150; 
+
+      if (elementTop < windowHeight - elementVisible) {
+        reveals[i].classList.add("active");
+      }
+    }
+  }
+
+  window.addEventListener("scroll", reveal);
+  reveal();
 </script>
 
 </body>
